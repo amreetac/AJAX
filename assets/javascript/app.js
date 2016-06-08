@@ -5,7 +5,7 @@
 	// displayMusicianInfo function now re-renders the HTML to display the ratings and images
 	function displayMusicianInfo(){
 		var p = $(this).attr('data-person');
-		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + p + "&api_key=dc6zaTOxFJmzC&limit=10";
+		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + p + "&api_key=dc6zaTOxFJmzC&limit=10";
 
 
 		// Creates AJAX call for the specific movie being
