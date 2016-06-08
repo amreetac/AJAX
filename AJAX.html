@@ -44,34 +44,40 @@
 			var results = response.data;
 			// Creates a generic div to hold the musician
 			for (var i = 0; i < results.length; i++) {
-				var musicianDiv = $('<div class="musician">');
-			// Retrieves the Rating Data
-			var rating = results[i].rating;
-			// Creates an element to have the rating displayed
-			var pOne = $('<p>').text( "Rating: " + rating);
-			// Displays the rating
-			musicianDiv.append(pOne);
+				var musicianDiv = $('<div class="musicartists">');
+				// Retrieves the Rating Data
+				var rating = results[i].rating;
+				// Creates an element to have the rating displayed
+				var pOne = $('<p>').text( "Rating: " + rating);
+				// Displays the rating
+				musicianDiv.append(pOne);
 
-			// Creates an element to hold the image.  Attempting a move function or if statement for 
-			// click on picture to get it to move.
-			if (move == 1) {
-			  var image = $('<img>').attr("src", results[i].images.fixed_height.url);
-			  //move = 0;
-			} else if (move == 0) {
-			  var image = $('<img>').attr("src", results[i].images.fixed_height_still.url);
-			  //move = 1;
+				// Creates an element to hold the image.  Attempting a move function or if statement for 
+				// click on picture to get it to move.
+				if (move == 1) {
+				  var image = $('<img>').attr("src", results[i].images.fixed_height.url);
+				  //move = 0;
+				} else if (move == 0) {
+				  var image = $('<img>').attr("src", results[i].images.fixed_height_still.url);
+				  //move = 1;
+				}
+				//move = 1 - move;
+				// Appends the image
+				musicianDiv.append(image);
+				//musicianDiv.prepend(image);
+				// Puts the ten images of one musician above the previous musicians.
+				$('#musiciansView').prepend(musicianDiv);
 			}
-			//move = 1 - move;
-			// Appends the image
-			musicianDiv.append(image);
-			//musicianDiv.prepend(image);
-			// Puts the ten images of one musician above the previous musicians.
-			$('#musiciansView').prepend(musicianDiv);
-		}
 		move = 1 - move;
 	});
 	}
 	// ========================================================
+//Create a new function for the picture to move
+
+	function clickOnImage(){
+				var moveIt = $('.musicartists').css("height","200px");
+	}
+
 	// Generic function for displaying musician data
 	function renderButtons(){
 		// Deletes the musicians prior to adding new musicians (this is necessary otherwise you will have repeat buttons)
@@ -103,6 +109,8 @@
 	// ========================================================
 	// Generic function for displaying the musician info
 	$(document).on('click', '.musician', displayMusicianInfo);
+	// We want to make an event handler for the images
+	$(document).on('click', '.musicartists', clickOnImage);
 	// ========================================================
 	// This calls the renderButtons() function
 	renderButtons();
