@@ -1,3 +1,5 @@
+$( document ).ready(function() {  
+
 // Initial array of musicians
 	var musicians = ['Britney Spears', 'Elton John', 'Ringo', 'Jimmy Hendrix', 'Michael Jackson', 'Justin Timberlake', 'Justin Bieber', 'Selena Gomez', 'Hilary Duff', 'Taylor Swift', 'Janet Jackson', 'Madonna', 'John Lennon', 'Kanye West', 'Celine Dion', 'Queen', 'Linkin Park', 'Mozart', 'Beethoven', 'Tori Amos', 'John Stamos'];
 	var move = 0;
@@ -84,3 +86,5 @@
 	// ========================================================
 	// This calls the renderButtons() function
 	renderButtons();
+
+});
