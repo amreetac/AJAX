@@ -62,6 +62,8 @@ $( document ).ready(function() {
 		    a.addClass('musician'); // Added a class
 		    a.attr('data-person', musicians[i]); // Added a data-attribute
 		    a.text(musicians[i]); // Provided the initial button text
+		    a.css("background-color", "blue");
+		    a.css("color", "white");
 		    $('#buttonsView').append(a); // Added the button to the HTML
 		}
 	}
