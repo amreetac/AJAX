@@ -1,7 +1,7 @@
 button, div, form, input {
 			margin: 10px;
-		}
+}
 
-.linear-gradient{
-background: radial-gradient(ellipse farthest-corner, red, yellow 10%, #1E90FF 50%, white);
+.container{
+			background: radial-gradient(ellipse farthest-corner, red, yellow 10%, #1E90FF 50%, white);
 }

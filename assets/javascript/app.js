@@ -1,10 +1,14 @@
 $( document ).ready(function() {  
 
 // Initial array of musicians
-	var musicians = ['Britney Spears', 'Elton John', 'Ringo', 'Jimmy Hendrix', 'Michael Jackson', 'Justin Timberlake', 'Justin Bieber', 'Selena Gomez', 'Hilary Duff', 'Taylor Swift', 'Janet Jackson', 'Madonna', 'John Lennon', 'Kanye West', 'Celine Dion', 'Queen', 'Linkin Park', 'Mozart', 'Beethoven', 'Tori Amos', 'John Stamos'];
+	var musicians = ['Britney Spears', 'Elton John', 'Ringo', 'Jimmy Hendrix', 'Michael Jackson', 'Justin Timberlake', 
+	'Justin Bieber', 'Selena Gomez', 'Hilary Duff', 'Taylor Swift', 'Janet Jackson', 'Madonna', 'John Lennon', 
+	'Kanye West', 'Celine Dion', 'Queen', 'Linkin Park', 'Mozart', 'Beethoven', 'Tori Amos', 'John Stamos'];
+
+	// Created a move variable to use as a function later on to move the pictures on clicks.
 	var move = 0;
 
-	alert("Are you sure you're over 18? The eye is watching you! Click on your favorite musicians at your own risk!");
+		alert("Are you sure you're over 18? The eye is watching you! Click on your favorite musicians at your own risk!");
 	// ========================================================
 	// displayMusicianInfo function now re-renders the HTML to display the ratings and images
 	function displayMusicianInfo(){
@@ -26,8 +30,9 @@ $( document ).ready(function() {
 				// Displays the rating
 				musicianDiv.append(pOne);
 
-				// Creates an element to hold the image.  Attempting a move function or if statement for 
-				// click on picture to get it to move.
+				// Creates an element to hold the image.  I have been attempting a move function or if statement for 
+				// click on picture to get it to move. I have an AJAX2 html file as well where I attempt other strategies.
+				//Please click on the buttons for the artists to see their pictures moving and not moving.
 				if (move == 1) {
 				  var image = $('<img>').attr("src", results[i].images.fixed_height.url);
 				  //move = 0;
@@ -49,7 +54,7 @@ $( document ).ready(function() {
 //Create a new function for the picture to move
 
 	function clickOnImage(){
-				var moveIt = $('.musicartists').css("height","200px");
+			var moveIt = $('.musicartists').css("height","200px");
 	}
 
 	// Generic function for displaying musician data
