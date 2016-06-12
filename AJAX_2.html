@@ -32,6 +32,7 @@
 	var musicians = ['Britney Spears', 'Elton John', 'Ringo', 'Jimmy Hendrix', 'Michael Jackson', 'Justin Timberlake', 'Justin Bieber', 'Selena Gomez', 'Hilary Duff', 'Taylor Swift', 'Janet Jackson', 'Madonna', 'John Lennon', 'Kanye West', 'Celine Dion', 'Queen', 'Linkin Park', 'Mozart', 'Beethoven', 'Tori Amos', 'John Stamos'];
 	var move = 0;
 	var angle = 0;
+	var results="";
 	// ========================================================
 	// displayMusicianInfo function now re-renders the HTML to display the ratings and images
 	function displayMusicianInfo(){
@@ -42,16 +43,18 @@
 		// Creates AJAX call for the specific movie being
 		$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 			$('#musiciansView').empty();
-			var results = response.data;
+			//var results = response.data;
+			results = response.data;
 			// Creates a generic div to hold the musician
 			for (var i = 0; i < results.length; i++) {
-				var musicianDiv = $('<div class="musicartists">');
+				var idString="id='"+ i + "'";
+				var musicianDiv = $('<div class="musicartists" ' + idString + '>');
 				// Retrieves the Rating Data
 				var rating = results[i].rating;
 				// Creates an element to have the rating displayed
 				var pOne = $('<p>').text( "Rating: " + rating);
 				// Displays the rating
-				//musicianDiv.append(pOne);
+				musicianDiv.append(pOne);
 
 				// Creates an element to hold the image.  Attempting a move function or if statement for
 				// click on picture to get it to move.
@@ -63,7 +66,7 @@
 				musicianDiv.append(image);
 				//musicianDiv.prepend(image);
 				// Puts the ten images of one musician above the previous musicians.
-				$('#musiciansView').prepend(musicianDiv);
+				$('#musiciansView').append(musicianDiv);
 			}
 		//move = 1 - move;
 	});
@@ -72,15 +75,18 @@
 //Create a new function for the picture to move
 
 	function clickOnImage(){
+		console.log(this.id);
 				move+= 1;
-				if (move > 2) move = 0;
-				if (move == 0) {
-					var moveIt = $('.musicartists').css({"height":"200px","background-color":"white"});
-				} else if (move == 1) {
-					var moveIt = $('.musicartists').css({"height":"300px","background-color":"blue"});
-				} else if (move == 2) {
-					var moveIt = $('.musicartists').css({"height":"400px","background-color":"orange"});
-				}
+				//var image = $('<img>').attr("src", results[parseInt(this.id, 10)].images.fixed_height.url);
+
+				//if (move > 2) move = 0;
+				//if (move == 0) {
+				//	var moveIt = $('.musicartists').css({"height":"200px","background-color":"white"});
+				//} else if (move == 1) {
+				//	var moveIt = $('.musicartists').css({"height":"300px","background-color":"blue"});
+				//} else if (move == 2) {
+				//	var moveIt = $('.musicartists').css({"height":"400px","background-color":"orange"});
+				//}
 	}
 
 	// Generic function for displaying musician data
