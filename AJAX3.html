@@ -1,21 +1,20 @@
-<!DOCTYPE html>
+<html>
 <head>
 	<title>Favorite Musicians</title>
-
 	<style type="text/css">
 		button, div, form, input {
 			margin: 10px;
 		}
-	</style>
 
+
+	</style>
 </head>
 <body>
 
 <div class="container">
 
   <!-- Rendered Buttons will get Dumped Here  -->
-  <div id="buttonsView">
-  </div>
+  <div id="buttonsView"></div>
 
   <form id="musician-form">
     <label for="musician-input">Add a Musician</label>
@@ -29,36 +28,35 @@
   <!-- Musicians will Get Dumped Dere -->
   <div id="musiciansView"></div>
 
- </div>
-
 <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
 <script type="text/javascript">
 	// Initial array of musicians
 	var musicians = ['Britney Spears', 'Elton John', 'Ringo', 'Jimmy Hendrix', 'Michael Jackson', 'Justin Timberlake', 'Justin Bieber', 'Selena Gomez', 'Hilary Duff', 'Taylor Swift', 'Janet Jackson', 'Madonna', 'John Lennon', 'Kanye West', 'Celine Dion', 'Queen', 'Linkin Park', 'Mozart', 'Beethoven', 'Tori Amos', 'John Stamos'];
 	var move = 0;
-	var results="";
 	// ========================================================
 	// displayMusicianInfo function now re-renders the HTML to display the ratings and images
 	function displayMusicianInfo(){
 		var p = $(this).attr('data-person');
 		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + p + "&api_key=dc6zaTOxFJmzC&limit=10";
+
+
 		// Creates AJAX call for the specific movie being
 		$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 			$('#musiciansView').empty();
-			//var results = response.data;
-			results = response.data;
+			var results = response.data;
 			// Creates a generic div to hold the musician
 			for (var i = 0; i < results.length; i++) {
-				var idString="id='"+ i + "'";
 				var musicianDiv = $('<div class="musicartists">');
 				// Retrieves the Rating Data
 				var rating = results[i].rating;
 				// Creates an element to have the rating displayed
 				var pOne = $('<p>').text( "Rating: " + rating);
 				// Displays the rating
-				musicianDiv.append(pOne);
+				//musicianDiv.append(pOne);
+
 				// Creates an element to hold the image.  Attempting a move function or if statement for
 				// click on picture to get it to move.
+
 				var image = $('<img>').attr("src", results[i].images.fixed_height_still.url);
 	
 			
@@ -66,19 +64,16 @@
 				musicianDiv.append(image);
 				//musicianDiv.prepend(image);
 				// Puts the ten images of one musician above the previous musicians.
-				$('#musiciansView').append(musicianDiv);
+				$('#musiciansView').prepend(musicianDiv);
 			}
 		//move = 1 - move;
 	});
 	}
 	// ========================================================
-//Create a new function for the picture to move. Another strategy. 
-//According to https://www.kirupa.com/html5/animating_movement_smoothly_using_css.htm, there is a way to use transitioning. I wasn't sure exactly how to connect the pictures with
-//the transitioning property.
+//Create a new function for the picture to move
+
 	function clickOnImage(){
-		console.log(this.id);
 				move+= 1;
-				var image = $('<img>').attr("src", results().images.fixed_height.url);
 				if (move > 2) move = 0;
 				if (move == 0) {
 					var moveIt = $('.musicartists').css({"height":"200px","background-color":"white"});
@@ -86,8 +81,9 @@
 					var moveIt = $('.musicartists').css({"height":"300px","background-color":"blue"});
 				} else if (move == 2) {
 					var moveIt = $('.musicartists').css({"height":"400px","background-color":"orange"});
-			}
+				}
 	}
+
 	// Generic function for displaying musician data
 	function renderButtons(){
 		// Deletes the musicians prior to adding new musicians (this is necessary otherwise you will have repeat buttons)
@@ -110,6 +106,7 @@
 		var musician = $('#musician-input').val().trim();
 		// The musician from the textbox is then added to our array
 		musicians.push(musician);
+
 		// Our array then runs which handles the processing of our musician array
 		renderButtons();
 		// We have this line so that users can hit "enter" instead of clicking on ht button and it won't move to the next page
