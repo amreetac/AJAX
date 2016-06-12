@@ -31,15 +31,12 @@
 	// Initial array of musicians
 	var musicians = ['Britney Spears', 'Elton John', 'Ringo', 'Jimmy Hendrix', 'Michael Jackson', 'Justin Timberlake', 'Justin Bieber', 'Selena Gomez', 'Hilary Duff', 'Taylor Swift', 'Janet Jackson', 'Madonna', 'John Lennon', 'Kanye West', 'Celine Dion', 'Queen', 'Linkin Park', 'Mozart', 'Beethoven', 'Tori Amos', 'John Stamos'];
 	var move = 0;
-	var angle = 0;
 	var results="";
 	// ========================================================
 	// displayMusicianInfo function now re-renders the HTML to display the ratings and images
 	function displayMusicianInfo(){
 		var p = $(this).attr('data-person');
 		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + p + "&api_key=dc6zaTOxFJmzC&limit=10";
-
-
 		// Creates AJAX call for the specific movie being
 		$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 			$('#musiciansView').empty();
@@ -55,10 +52,8 @@
 				var pOne = $('<p>').text( "Rating: " + rating);
 				// Displays the rating
 				musicianDiv.append(pOne);
-
 				// Creates an element to hold the image.  Attempting a move function or if statement for
 				// click on picture to get it to move.
-
 				var image = $('<img>').attr("src", results[i].images.fixed_height_still.url);
 	
 			
@@ -73,12 +68,10 @@
 	}
 	// ========================================================
 //Create a new function for the picture to move
-
 	function clickOnImage(){
 		console.log(this.id);
 				move+= 1;
 				//var image = $('<img>').attr("src", results[parseInt(this.id, 10)].images.fixed_height.url);
-
 				//if (move > 2) move = 0;
 				//if (move == 0) {
 				//	var moveIt = $('.musicartists').css({"height":"200px","background-color":"white"});
@@ -88,7 +81,6 @@
 				//	var moveIt = $('.musicartists').css({"height":"400px","background-color":"orange"});
 				//}
 	}
-
 	// Generic function for displaying musician data
 	function renderButtons(){
 		// Deletes the musicians prior to adding new musicians (this is necessary otherwise you will have repeat buttons)
@@ -111,7 +103,6 @@
 		var musician = $('#musician-input').val().trim();
 		// The musician from the textbox is then added to our array
 		musicians.push(musician);
-
 		// Our array then runs which handles the processing of our musician array
 		renderButtons();
 		// We have this line so that users can hit "enter" instead of clicking on ht button and it won't move to the next page

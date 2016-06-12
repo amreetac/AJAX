@@ -3,6 +3,8 @@ $( document ).ready(function() {
 // Initial array of musicians
 	var musicians = ['Britney Spears', 'Elton John', 'Ringo', 'Jimmy Hendrix', 'Michael Jackson', 'Justin Timberlake', 'Justin Bieber', 'Selena Gomez', 'Hilary Duff', 'Taylor Swift', 'Janet Jackson', 'Madonna', 'John Lennon', 'Kanye West', 'Celine Dion', 'Queen', 'Linkin Park', 'Mozart', 'Beethoven', 'Tori Amos', 'John Stamos'];
 	var move = 0;
+
+	alert("Are you sure you're over 18? The eye is watching you! Click on your favorite musicians at your own risk!");
 	// ========================================================
 	// displayMusicianInfo function now re-renders the HTML to display the ratings and images
 	function displayMusicianInfo(){
@@ -72,11 +74,13 @@ $( document ).ready(function() {
 	$('#addMusician').on('click', function(){
 		// This line of code will grab the input from the textbox
 		var musician = $('#musician-input').val().trim();
+
 		// The musician from the textbox is then added to our array
 		musicians.push(musician);
 
 		// Our array then runs which handles the processing of our musician array
 		renderButtons();
+
 		// We have this line so that users can hit "enter" instead of clicking on ht button and it won't move to the next page
 		return false;
 	})
